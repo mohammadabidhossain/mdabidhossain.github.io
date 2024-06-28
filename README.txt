@@ -1,32 +1,12 @@
-Massively by HTML5 UP
-html5up.net | @ajlkn
-Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+Welcome to My Portfolio!
+Hello, I'm Md. Abid Hossain, a dedicated Excel Analyst with a passion for transforming data into actionable insights. With a solid background in data analysis and a knack for solving complex problems, I excel at leveraging Excel's powerful tools and functions to drive business decisions and streamline processes.
 
+My expertise includes:
 
-This is Massively, a text-heavy, article-oriented design built around a huge background
-image (with a new parallax implementation I'm testing) and scroll effects (powered by
-Scrollex). A *slight* departure from all the one-pagers I've been doing lately, but one
-that fulfills a few user requests and makes use of some new techniques I've been wanting
-to try out. Enjoy it :)
+Data Analysis: Proficient in cleaning, organizing, and analyzing large datasets to uncover trends and patterns.
+Advanced Excel Functions: Skilled in using functions such as VLOOKUP, INDEX & MATCH, PivotTables, and more to perform in-depth data analysis.
+Data Visualization: Capable of creating clear and compelling charts and graphs to present data insights effectively.
+Reporting: Experienced in developing detailed and dynamic reports to support strategic planning and operational efficiency.
+In my portfolio, you will find a collection of projects that showcase my ability to harness the power of Excel to solve real-world problems and provide valuable insights. I am committed to continuous learning and staying updated with the latest tools and techniques in data analysis.
 
-Demo images* courtesy of Unsplash, a radtastic collection of CC0 (public domain) images
-you can use for pretty much whatever.
-
-(* = not included)
-
-AJ
-aj@lkn.io | @ajlkn
-
-
-Credits:
-
-	Demo Images:
-		Unsplash (unsplash.com)
-
-	Icons:
-		Font Awesome (fontawesome.io)
-
-	Other:
-		jQuery (jquery.com)
-		Scrollex (github.com/ajlkn/jquery.scrollex)
-		Responsive Tools (github.com/ajlkn/responsive-tools)
+Feel free to explore my work and reach out if you have any questions or collaboration ideas. Thank you for visiting!
