@@ -1,12 +1,13 @@
 Welcome to My Portfolio!
-Hello, I'm Md. Abid Hossain, a dedicated Excel Analyst with a passion for transforming data into actionable insights. With a solid background in data analysis and a knack for solving complex problems, I excel at leveraging Excel's powerful tools and functions to drive business decisions and streamline processes.
+Hello, I'm Md. Abid Hossain, a Network Engineer specializing in Juniper (Junos OS) and Palo Alto network security. I focus on automating device provisioning, building and hardening VPN architectures, and streamlining network operations through scripting.
 
 My expertise includes:
 
-Data Analysis: Proficient in cleaning, organizing, and analyzing large datasets to uncover trends and patterns.
-Advanced Excel Functions: Skilled in using functions such as VLOOKUP, INDEX & MATCH, PivotTables, and more to perform in-depth data analysis.
-Data Visualization: Capable of creating clear and compelling charts and graphs to present data insights effectively.
-Reporting: Experienced in developing detailed and dynamic reports to support strategic planning and operational efficiency.
-In my portfolio, you will find a collection of projects that showcase my ability to harness the power of Excel to solve real-world problems and provide valuable insights. I am committed to continuous learning and staying updated with the latest tools and techniques in data analysis.
+Juniper Networks: Junos OS configuration, multi-hop automation via bastion hosts, user provisioning, and SNMP monitoring setup.
+Palo Alto Networks: Firewall policy management and network security operations.
+VPN Architecture: Design and implementation of VPN solutions, including hands-on educational material on Juniper VPN concepts.
+Automation & Scripting: Expect, Bash, and Python scripts to remove manual work from repetitive network administration tasks.
+
+In my portfolio, you will find a collection of projects that showcase my ability to automate network infrastructure, secure environments with Palo Alto and Juniper tooling, and build practical software tools. I am committed to continuous learning and staying current with the latest tools and techniques in network engineering and security.
 
 Feel free to explore my work and reach out if you have any questions or collaboration ideas. Thank you for visiting!
