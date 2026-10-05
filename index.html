@@ -18,25 +18,12 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-	<link rel="stylesheet" href="assets/css/style.css" />
+	<link rel="stylesheet" href="assets/css/style.css?v=2" />
 </head>
 <body>
 
-	<!-- Cursor-follow tooltip for repo cards -->
-	<div id="repo-tooltip" class="repo-tooltip" role="tooltip" aria-hidden="true">
-		<div class="rt-head">
-			<span class="rt-lang-dot" id="rt-lang-dot"></span>
-			<span class="rt-name" id="rt-name"></span>
-		</div>
-		<p class="rt-desc" id="rt-desc"></p>
-		<div class="rt-meta">
-			<span id="rt-lang"></span>
-			<span id="rt-stars">★ 0</span>
-			<span id="rt-forks">⑂ 0</span>
-			<span id="rt-updated"></span>
-		</div>
-		<div class="rt-cta">Click to open on GitHub →</div>
-	</div>
+	<div id="scroll-progress" aria-hidden="true"></div>
+	<div id="cursor-glow" aria-hidden="true"></div>
 
 	<div class="bg-grid" aria-hidden="true"></div>
 	<div class="bg-glow" aria-hidden="true"></div>
@@ -72,22 +59,39 @@
 
 		<!-- Hero -->
 		<section class="hero">
-			<div class="container hero-inner">
-				<p class="eyebrow reveal">Rajshahi, Bangladesh · Available for freelance &amp; remote work</p>
-				<h1 class="reveal">
-					Md. Abid Hossain
-				</h1>
-				<h2 class="hero-role reveal">
-					<span class="typed" id="typed-role">Network Engineer</span><span class="caret">|</span>
-				</h2>
-				<p class="hero-lede reveal">
-					I specialize in <strong>Junos OS &amp; Palo Alto firewall automation</strong>, VPN architecture,
-					and network security — and I build automation tooling and interactive web projects on the side.
-				</p>
-				<div class="hero-actions reveal">
-					<a href="#projects" class="btn btn-primary">View Projects</a>
-					<a href="#contact" class="btn btn-ghost">Get in Touch</a>
-					<a href="https://www.upwork.com/freelancers/~01a7f3d16bab6fcfa8" target="_blank" rel="noopener" class="btn btn-ghost">Hire me on Upwork ↗</a>
+			<canvas id="net-canvas" aria-hidden="true"></canvas>
+			<div class="container hero-grid">
+				<div class="hero-copy">
+					<p class="eyebrow reveal">Rajshahi, Bangladesh · Available for freelance &amp; remote work</p>
+					<h1 class="reveal">
+						Md. Abid Hossain
+					</h1>
+					<h2 class="hero-role reveal">
+						<span class="typed" id="typed-role">Network Engineer</span><span class="caret">|</span>
+					</h2>
+					<p class="hero-lede reveal">
+						I specialize in <strong>Junos OS &amp; Palo Alto firewall automation</strong>, VPN architecture,
+						and network security — and I build automation tooling and interactive web projects on the side.
+					</p>
+					<div class="hero-actions reveal">
+						<a href="#projects" class="btn btn-primary">View Projects</a>
+						<a href="#contact" class="btn btn-ghost">Get in Touch</a>
+						<a href="https://www.upwork.com/freelancers/~01a7f3d16bab6fcfa8" target="_blank" rel="noopener" class="btn btn-ghost">Hire me on Upwork ↗</a>
+					</div>
+				</div>
+
+				<div class="hero-terminal reveal" id="hero-terminal">
+					<div class="term-bar">
+						<span class="term-dot term-dot-red"></span>
+						<span class="term-dot term-dot-yellow"></span>
+						<span class="term-dot term-dot-green"></span>
+						<span class="term-title">abid@network: ~</span>
+					</div>
+					<div class="term-body" id="term-output" tabindex="0" aria-label="Interactive terminal. Type help and press Enter."></div>
+					<div class="term-inputline">
+						<span class="term-prompt">abid@network:~$</span>
+						<input type="text" id="term-input" class="term-input" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Terminal command input" />
+					</div>
 				</div>
 			</div>
 			<a href="#about" class="scroll-cue" aria-label="Scroll down">
@@ -121,6 +125,25 @@
 						<div class="info-card">
 							<span class="info-label">Open to</span>
 							<span class="info-value">Freelance &amp; Remote Roles</span>
+						</div>
+					</div>
+
+					<div class="focus-strip reveal">
+						<div class="focus-item">
+							<span class="focus-num">Junos</span>
+							<span class="focus-label">OS &amp; PAN-OS environments</span>
+						</div>
+						<div class="focus-item">
+							<span class="focus-num">VPN</span>
+							<span class="focus-label">architecture &amp; hardening</span>
+						</div>
+						<div class="focus-item">
+							<span class="focus-num">Multi-hop</span>
+							<span class="focus-label">bastion automation</span>
+						</div>
+						<div class="focus-item">
+							<span class="focus-num">Py / Bash</span>
+							<span class="focus-label">tooling &amp; scripting</span>
 						</div>
 					</div>
 				</div>
@@ -174,14 +197,138 @@
 		<section id="projects" class="section">
 			<div class="container">
 				<p class="section-kicker reveal">Projects</p>
-				<h2 class="section-title reveal">Things I've built</h2>
+				<h2 class="section-title reveal">Selected work</h2>
 				<p class="section-sub reveal">
-					Pulled live from <a href="https://github.com/mohammadabidhossain" target="_blank" rel="noopener">GitHub</a>.
-					Hover any card for a quick summary <span class="hide-touch">— it follows your cursor</span>.
+					A closer look at how I approach real network and automation problems — the situation,
+					what I built, and what changed as a result.
 				</p>
 
-				<div id="projects-grid" class="projects-grid reveal">
-					<!-- populated by JS -->
+				<div class="case-list">
+					<article class="case-study reveal">
+						<div class="case-index">01</div>
+						<div class="case-body">
+							<button class="case-head case-toggle" aria-expanded="true" aria-controls="case-01">
+								<h3>Site-to-site VPN architecture across a Junos / PAN-OS estate</h3>
+								<span class="case-tag">Network Security</span>
+								<svg class="case-chevron" viewBox="0 0 24 24" width="18" height="18"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
+							</button>
+							<div class="case-collapse is-open" id="case-01">
+								<div class="case-collapse-inner">
+									<div class="case-blocks">
+										<div class="case-block">
+											<span class="case-label">Problem</span>
+											<p>A mixed Juniper and Palo Alto environment needed consistent, hardened
+												site-to-site connectivity without relying on ad-hoc, per-site configs
+												that were hard to audit or reproduce.</p>
+										</div>
+										<div class="case-block">
+											<span class="case-label">What I built</span>
+											<p>Designed and deployed standardized IPsec site-to-site VPN topologies
+												across Junos OS and PAN-OS devices, with hardened firewall policy and
+												consistent security-zone segmentation across sites.</p>
+										</div>
+										<div class="case-block outcome">
+											<span class="case-label">Outcome</span>
+											<p>A repeatable VPN design pattern that's faster to roll out to new sites
+												and straightforward to audit for security posture.</p>
+										</div>
+									</div>
+									<div class="case-footer">
+										<div class="tag-row">
+											<span class="tag">Junos OS</span>
+											<span class="tag">PAN-OS</span>
+											<span class="tag">IPsec</span>
+											<span class="tag">Firewall Policy</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</article>
+
+					<article class="case-study reveal">
+						<div class="case-index">02</div>
+						<div class="case-body">
+							<button class="case-head case-toggle" aria-expanded="false" aria-controls="case-02">
+								<h3>Automated device provisioning through multi-hop bastion hosts</h3>
+								<span class="case-tag">Automation</span>
+								<svg class="case-chevron" viewBox="0 0 24 24" width="18" height="18"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
+							</button>
+							<div class="case-collapse" id="case-02">
+								<div class="case-collapse-inner">
+									<div class="case-blocks">
+										<div class="case-block">
+											<span class="case-label">Problem</span>
+											<p>Provisioning and configuration changes had to reach devices sitting
+												behind multiple SSH bastion hops, which made manual rollouts slow and
+												error-prone at any real scale.</p>
+										</div>
+										<div class="case-block">
+											<span class="case-label">What I built</span>
+											<p>Python and Bash tooling — using Expect/TCL and multi-hop SSH — to chain
+												through bastion hosts and push configuration changes to Junos and
+												Palo Alto devices consistently, with the same logic reusable across jobs.</p>
+										</div>
+										<div class="case-block outcome">
+											<span class="case-label">Outcome</span>
+											<p>Removed the manual, hop-by-hop SSH work from routine provisioning,
+												cutting the chance of a missed step or inconsistent config.</p>
+										</div>
+									</div>
+									<div class="case-footer">
+										<div class="tag-row">
+											<span class="tag">Python</span>
+											<span class="tag">Bash</span>
+											<span class="tag">Expect / TCL</span>
+											<span class="tag">Multi-hop SSH</span>
+										</div>
+										<a class="case-link" href="https://github.com/mohammadabidhossain?tab=repositories" target="_blank" rel="noopener">View related repos ↗</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</article>
+
+					<article class="case-study reveal">
+						<div class="case-index">03</div>
+						<div class="case-body">
+							<button class="case-head case-toggle" aria-expanded="false" aria-controls="case-03">
+								<h3>Interactive tooling &amp; visualizations on the side</h3>
+								<span class="case-tag">Web &amp; Tooling</span>
+								<svg class="case-chevron" viewBox="0 0 24 24" width="18" height="18"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
+							</button>
+							<div class="case-collapse" id="case-03">
+								<div class="case-collapse-inner">
+									<div class="case-blocks">
+										<div class="case-block">
+											<span class="case-label">Problem</span>
+											<p>Network and ops data (device inventories, VPN status, spreadsheet exports)
+												is easier to reason about visually than as raw text or rows in a sheet.</p>
+										</div>
+										<div class="case-block">
+											<span class="case-label">What I built</span>
+											<p>Small JavaScript / Three.js front-ends and Excel-based data automation
+												to turn repetitive spreadsheet work and static data into something
+												interactive and quicker to scan.</p>
+										</div>
+										<div class="case-block outcome">
+											<span class="case-label">Outcome</span>
+											<p>Faster, more visual ways to work through the same data that would
+												otherwise sit in a spreadsheet or a wall of CLI output.</p>
+										</div>
+									</div>
+									<div class="case-footer">
+										<div class="tag-row">
+											<span class="tag">JavaScript</span>
+											<span class="tag">Three.js</span>
+											<span class="tag">Excel Automation</span>
+										</div>
+										<a class="case-link" href="https://github.com/mohammadabidhossain?tab=repositories" target="_blank" rel="noopener">View related repos ↗</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</article>
 				</div>
 
 				<div class="projects-footer reveal">
@@ -243,6 +390,6 @@
 		</div>
 	</footer>
 
-	<script src="assets/js/app.js?v=2"></script>
+	<script src="assets/js/app.js?v=4"></script>
 </body>
 </html>
